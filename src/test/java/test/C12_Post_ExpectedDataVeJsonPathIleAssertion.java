@@ -49,7 +49,7 @@ public class C12_Post_ExpectedDataVeJsonPathIleAssertion {
     @Test
     public void post01(){
 
-        // 1- Url ve Request Body hazirla
+        // 1- Url ve Request Body hazirlayalim
 
         String url = "https://restful-booker.herokuapp.com/booking";
 
@@ -91,10 +91,11 @@ public class C12_Post_ExpectedDataVeJsonPathIleAssertion {
         assertEquals(expData.getJSONObject("booking").get("totalprice"), resJP.get("booking.totalprice"));
         assertEquals(expData.getJSONObject("booking").get("depositpaid"), resJP.get("booking.depositpaid"));
         assertEquals(expData.getJSONObject("booking").get("additionalneeds"), resJP.get("booking.additionalneeds"));
-        assertEquals(expData.getJSONObject("booking").getJSONObject("bookingdates"), resJP.get("checkin"), resJP.get("booking.bookingdates.checkout"));
-
+        assertEquals(expData.getJSONObject("booking").getJSONObject("bookingdates").get("checkin") ,
+                resJP.get("booking.bookingdates.checkin") );
+        assertEquals(expData.getJSONObject("booking").getJSONObject("bookingdates").get("checkout") ,
+                resJP.get("booking.bookingdates.checkout") );
 
     }
+    }
 
-
-}
