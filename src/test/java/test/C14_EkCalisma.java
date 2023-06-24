@@ -82,7 +82,7 @@ public class C14_EkCalisma {
             // Assertion yapalim
 
 
-            response.then().assertThat().body()
+
                 JsonPath resJson = response.jsonPath();
 
 
