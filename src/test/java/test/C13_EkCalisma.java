@@ -39,19 +39,19 @@ gonderdigimizde donen response’un asagidaki gibi oldugunu test edin.
 
         // 2 - expected data hazirlayalim
 
+        JSONObject data = new JSONObject();
+
+        data.put("id", 3);
+        data.put("employee_name", "Ashton Cox");
+        data.put("employee_salary", 86000);
+        data.put("employee_age", 66);
+        data.put("profile_image", "");
+
         JSONObject expData = new JSONObject();
 
-        expData.put("id", 3);
-        expData.put("employee_name", "Ashton Cox");
-        expData.put("employee_salary", 86000);
-        expData.put("employee_age", 66);
-        expData.put("profile_image", "");
-
-        JSONObject expBody = new JSONObject();
-
-        expBody.put("status", "success");
-        expBody.put("data", expData);
-        expBody.put("message", "Successfully! Record has been fetched.");
+        expData.put("status", "success");
+        expData.put("data", data);
+        expData.put("message", "Successfully! Record has been fetched.");
 
 
 
@@ -65,14 +65,14 @@ gonderdigimizde donen response’un asagidaki gibi oldugunu test edin.
 
         JsonPath respJP = response.jsonPath();
 
-        assertEquals(expBody.get("status"), respJP.get("status"));
-        assertEquals(expBody.get("message"), respJP.get("message"));
+        assertEquals(expData.get("status"), respJP.get("status"));
+        assertEquals(expData.get("message"), respJP.get("message"));
 
-        assertEquals(expBody.getJSONObject("data").get("id"),respJP.get("data.id"));
-        assertEquals(expBody.getJSONObject("data").get("employee_name"),respJP.get("data.employee_name"));
-        assertEquals(expBody.getJSONObject("data").get("employee_salary"),respJP.get("data.employee_salary"));
-        assertEquals(expBody.getJSONObject("data").get("employee_age"),respJP.get("data.employee_age"));
-        assertEquals(expBody.getJSONObject("data").get("profile_image"),respJP.get("data.profile_image"));
+        assertEquals(expData.getJSONObject("data").get("id"),respJP.get("data.id"));
+        assertEquals(expData.getJSONObject("data").get("employee_name"),respJP.get("data.employee_name"));
+        assertEquals(expData.getJSONObject("data").get("employee_salary"),respJP.get("data.employee_salary"));
+        assertEquals(expData.getJSONObject("data").get("employee_age"),respJP.get("data.employee_age"));
+        assertEquals(expData.getJSONObject("data").get("profile_image"),respJP.get("data.profile_image"));
 
     }
 }
